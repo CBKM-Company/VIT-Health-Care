@@ -5,7 +5,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,24 +15,28 @@
         const getStorage = (item) => (JSON.parse(localStorage.getItem(item)))
         const setStorage = (item, data) => (localStorage.setItem(item, JSON.stringify(data)))
         const removeStorage = (item) => (localStorage.removeItem(item))
-       axios.post('http://vit-health-care.herokuapp.com/patient/check/',{
+        
+       axios.post('http://vit-health-care.herokuapp.com/patient/getphone',{
         phone:getStorage('contact')
        })
        .then(res=>{
-        tbody = document.getElementById("enquiry-tbody")
-        tbody.innerHTML = ""
-        data.map((d, i) => {
+           
+        console.log(res.data.data[0].records[0]);
+        tbody = document.getElementById("enquiry-tbody");
+            tbody.innerHTML = "";
+        for(i=0;i<res.data.data[0].records.length;i++){
             tbody.innerHTML += `<tr>
-            <th scope="row">${i + 1}</th>
-            <td>${d.name}</td>
-            <td>${d.contact}</td>
-            <td>${d.email}</td>
-            <td>${d.message}</td>
-            <td>${d.date.split('T')[0]}</td>
-            <td><button onclick=delEnq("${d.id}")>Delete</button></td>
-            </tr>
-            <tr>`
+                    <th scope="row">${i + 1}</th>
+                    <td>${res.data.data[0].records[i].marks.depression}</td>
+                    <td>${res.data.data[0].records[i].marks.dementia}</td>
+                    <td>${res.data.data[0].records[i].createdAt.split('T')[0]}</td>
+                    </tr>
+                    <tr>`
+        }
 
+       })
+       .catch(e=>{
+           console.log(e);
        })
        
    </script>

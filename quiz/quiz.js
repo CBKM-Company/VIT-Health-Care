@@ -128,7 +128,7 @@ axios.get("http://vit-health-care.herokuapp.com/depress")
     function nextQues(){
         if(opSelect != -1){
         if(qno<= 5){
-            alert(opSelect); 
+            //alert(opSelect); 
             if(i==0){
                 depres += opSelect;
                 totaldepres+=3;
@@ -146,7 +146,7 @@ axios.get("http://vit-health-care.herokuapp.com/depress")
           console.log(totaldemres);
           totaldepres = (depres/totaldepres)*100;
           totaldemres = (demres/totaldemres)*100;
-          alert(totaldepres+'--'+totaldemres)
+         // alert(totaldepres+'--'+totaldemres)
           setStorage('result',{
             depression:totaldepres,
             dementia:totaldemres
@@ -162,13 +162,16 @@ axios.get("http://vit-health-care.herokuapp.com/depress")
           })
           .then(res=>{
             if(res.data.success){
-              console.log(res.data);
               
+              console.log(res.data);
+             
+             // alert('thanks')
+              window.location.href = "result.html";
              // window.location.href = "index.html";
             }
           })
-          alert('question over')
-          window.location.href = "result.html"
+          //alert('question over')
+          
        // window.location.href = "index.html";
         }
             

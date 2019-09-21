@@ -46,6 +46,11 @@
               
           
     </style>
+    <script>
+        function checkRecord(){
+            window.location.href = 'records.html'
+        }
+    </script>
     <title>Result</title>
     <script>
             const getStorage = (item) => (JSON.parse(localStorage.getItem(item)))
@@ -53,8 +58,9 @@
             const removeStorage = (item) => (localStorage.removeItem(item))
         result = getStorage('result');
         setTimeout(()=>{
-            document.getElementById('showResult').innerHTML = `Depression: ${result.depression}<br>
-            Dementia: ${result.dementia}` 
+            document.getElementById('showResult').innerHTML = `<h2>Depression: ${result.depression}<br>
+            Dementia: ${result.dementia}</h2><br>
+            <button onclick="checkRecord()">Check Records</button>` 
         },2000)
     </script>
   </head>
