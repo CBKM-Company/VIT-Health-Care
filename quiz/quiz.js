@@ -144,39 +144,18 @@ axios.get("http://vit-health-care.herokuapp.com/depress")
         else{
           console.log(totaldepres);
           console.log(totaldemres);
-          totaldepres = (depres/totaldepres)*100;
-          totaldemres = (demres/totaldemres)*100;
-         // alert(totaldepres+'--'+totaldemres)
+          totaldepres = (depres/totaldepres);
+          totaldemres = (demres/totaldemres);
           setStorage('result',{
             depression:totaldepres,
             dementia:totaldemres
           })
-          axios.post('http://vit-health-care.herokuapp.com/patient/addrecord',{
-            id:getStorage('id'),
-            ID:"ScreenTest-01-dementia-depression",
-            marks:{
-              depression:totaldepres,
-              dementia:totaldemres,
-              result:"You have deprematic dementia"
-            }
-          })
-          .then(res=>{
-            if(res.data.success){
-              
-              console.log(res.data);
-             
-             // alert('thanks')
-              window.location.href = "result.html";
-             // window.location.href = "index.html";
-            }
-          })
-          //alert('question over')
           
-       // window.location.href = "index.html";
-        }
-            
+          window.location.href = 'brain.html'
+          //alert('question over')    
+        }      
         }        
-    }
+      }
     
 
     function clear(){

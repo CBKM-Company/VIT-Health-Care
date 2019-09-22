@@ -56,7 +56,9 @@ function select(que,ans){
     }
     next();
 }
-
+    const getStorage = (item) => (JSON.parse(localStorage.getItem(item)))
+    const setStorage = (item, data) => (localStorage.setItem(item, JSON.stringify(data)))
+    const removeStorage = (item) => (localStorage.removeItem(item))
 
 function next(){
     if(imgql>=0){
@@ -89,7 +91,16 @@ function next(){
   q++;
 }
 else{
-    alert('Your Result: '+result/totalResult);
+  res = getStorage('result');
+  delirium = 1-result/totalResult;
+  console.log(res)
+  setStorage('mar',{
+    depression : res.depression,
+    dementia : res.dementia,
+    delirium : delirium
+  })
+    alert('delirium: '+delirium+' depression: '+res.depression+' dementia: '+res.dementia);
+    window.location.href = 'result.html';
 }
 }
 
