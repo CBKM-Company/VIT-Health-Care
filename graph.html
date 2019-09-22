@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visitors</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <canvas id="myChart" width="100%" height="100%"></canvas>
+    <script>
+        axios.post('http://vit-health-care.herokuapp.com/patient/getphone',{phone:8959859526})
+            .then(res => {
+                lables = []
+                dataset1=[]
+               
+                dataset2=[]
+               
+                dataset3=[]
+
+                console.log(res.data.data[0].records)
+                res.data.data[0].records.map(d=>{
+                    dataset1.push(d.marks.depression)
+                    lables.push(d.createdAt)
+                    dataset2.push(d.marks.dementia)
+                   
+                    dataset3.push(d.marks.delirium)
+                    
+
+                })
+                
+
+                
+                // res.data.records.pm
+                // res.data.data.map(d => {
+                //     data.push(`${d.stamp.split(':')[0]}`)
+                // })
+                // // console.log(data)
+                // lables = data.filter((v, i, a) => a.indexOf(v) === i);
+                // console.log(lables)
+               
+                // for (i = 0; i < lables.length; i++) {
+                //     for(j=0;j<data.length;j++){
+                //         if(data[j]==lables[i]){
+                //             dataset[i]=dataset[i]?dataset[i]+1:1
+                //         }
+                //     }
+                // }
+                // console.log(dataset)
+
+                var ctx = document.getElementById('myChart');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: lables,
+                        datasets: [
+                        {
+                            label: 'Depression',
+                            data: dataset1,
+                            borderColor:'red',
+                            backgroundColor:'rgba(255,0,0,0.3)'
+
+                        },
+                        {
+                            label: 'Dementia',
+                            data: dataset2,
+                            borderColor:'green',
+                            backgroundColor:'rgba(0,255,0,0.3)'
+
+
+                        },
+                        {
+                            label: 'Delirium',
+                            data: dataset3,
+                            borderColor:'blue',
+                            backgroundColor:'rgba(0,0,255,0.3)'
+
+
+                        },
+
+                        ]
+                    },
+
+
+                });
+            })
+
+    </script>
+</body>
+
+</html>
