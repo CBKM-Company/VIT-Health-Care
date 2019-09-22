@@ -13,17 +13,18 @@
 </head>
 <script>
     function exit(){
-        alert('exit');
         localStorage.clear();
         window.location.href = 'login.html';
     }
 </script>
 
-<body>
+<body >
     <center>
         <button type="button" class="btn btn-outline-danger mt-0" onclick="exit()">Exit</button>
     </center>
-    <canvas id="myChart" width="100%" height="100%"></canvas>
+    <div class="p-2 mt-2 bg-danger text-white container" style="font-size: 20px; text-align:center;">Overview<br><div style="font-size: 15px;">Look in landscape view for better visibility</div></div>
+    
+    <canvas id="myChart" width="100%">Loading...</canvas>
     <script>
             const getStorage = (item) => (JSON.parse(localStorage.getItem(item)))
             const setStorage = (item, data) => (localStorage.setItem(item, JSON.stringify(data)))

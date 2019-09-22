@@ -92,7 +92,7 @@ function next(){
             opt = nextCharacter(opt);
 }
 
-           str+= `<a onclick="nextQues()" class="button is-primary is-inverted is-outlined is-rounded is-fullwidth">Submit</a>
+           str+= `
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@ else{
     dementia : res.dementia,
     delirium : delirium
   })
-    alert('delirium: '+delirium+' depression: '+res.depression+' dementia: '+res.dementia);
+    //alert('delirium: '+delirium+' depression: '+res.depression+' dementia: '+res.dementia);
     window.location.href = 'result.html';
 }
 }

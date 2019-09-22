@@ -146,15 +146,18 @@ axios.get("http://vit-health-care.herokuapp.com/depress")
           console.log(totaldemres);
           totaldepres = (depres/totaldepres);
           totaldemres = (demres/totaldemres);
-          alert(totaldepres)
+          //alert(totaldepres)
           setStorage('result',{
             depression:totaldepres,
             dementia:totaldemres
           })
           
-          window.location.href = 'brain.html'
+          window.location.href = 'brain.html';
           //alert('question over')    
         }      
+        }
+        else{
+          alert('Please select answer');
         }        
       }
     
