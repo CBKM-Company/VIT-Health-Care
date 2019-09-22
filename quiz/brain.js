@@ -2,6 +2,7 @@ questions = []
 imgques = []
 imgql = 0;
 qno = 0;
+bimg = '';
 q=1;
 result = 0;
 totalResult = 0;
@@ -33,10 +34,23 @@ function start(img){
     imgques = questions[b[qno]].questions;
     totalResult = imgques.length;
     imgql = imgques.length-1;
-    document.getElementById('change').innerHTML = ` <center>
+    document.getElementById('img').innerHTML  = ` <center>
     <img src="http://vit-health-care.herokuapp.com/static/${img}" alt="">
     </center>`;
+    document.getElementById('img').hidden = true;
+
     qno++;
+}
+
+function bstart(){
+  document.getElementById('img').hidden = false;
+  document.getElementById('change').innerHTML = "";
+  setTimeout(() => {
+    next();
+    document.getElementById('img').hidden = true;
+
+}, 5000);
+
 }
 
 function nextCharacter(c) { 
@@ -46,9 +60,7 @@ function nextCharacter(c) {
 
 
 
-setTimeout(() => {
-    next();
-}, 5000);
+
 
 function select(que,ans){
     if(que == ans){

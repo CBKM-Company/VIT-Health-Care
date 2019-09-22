@@ -146,6 +146,7 @@ axios.get("http://vit-health-care.herokuapp.com/depress")
           console.log(totaldemres);
           totaldepres = (depres/totaldepres);
           totaldemres = (demres/totaldemres);
+          alert(totaldepres)
           setStorage('result',{
             depression:totaldepres,
             dementia:totaldemres
@@ -210,8 +211,7 @@ function submitContact(){
  // window.location.href = "index.html";
   }
   else{
-  alert('false');
-  
+  alert('Please Enter Correct No.!!');
   }
   
 }
@@ -233,10 +233,10 @@ function registerContact(){
 
       }
     })
- // window.location.href = "index.html";
+
   }
   else{
-  alert('false');
+  alert('Please Enter Correct Details!!');
   }
 
   
